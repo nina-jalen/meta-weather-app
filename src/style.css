@@ -14,7 +14,7 @@ body {
 .weather-container {
   max-width: 785px;
   width: 785px;
-  margin: 20px auto;
+  margin: 20px 0 5px 0;
   padding: 20px 30px;
   background-color: #1f1f1f;
   border-style: none;
@@ -247,4 +247,18 @@ input {
   display: block;
   margin: 0 auto;
   width: 35px;
+}
+
+footer {
+  color: whitesmoke;
+  font-size: 10px;
+  font-weight: 300;
+  font-family: "DM Sans";
+  letter-spacing: 1px;
+  margin: 0px 0px 0 20px;
+  padding: 0;
+}
+
+.github-link {
+  color: rgb(45, 108, 255);
 }
