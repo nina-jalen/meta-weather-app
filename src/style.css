@@ -1,264 +1,264 @@
 body {
-  background-color: #4a4a4a;
-  font-family: "DM Sans", sans-serif;
+	background-color: #4a4a4a;
+	font-family: "DM Sans", sans-serif;
 }
 
 .container {
-  max-width: 785px;
-  width: 100%;
-  margin: 35px auto;
-  padding-right: 20px;
-  padding-left: 20px;
+	max-width: 785px;
+	width: 100%;
+	margin: 35px auto;
+	padding-right: 20px;
+	padding-left: 20px;
 }
 
 .weather-container {
-  max-width: 785px;
-  width: 785px;
-  margin: 20px 0 5px 0;
-  padding: 20px 30px;
-  background-color: #1f1f1f;
-  border-style: none;
-  border-radius: 25px;
+	max-width: 785px;
+	width: 785px;
+	margin: 20px 0 5px 0;
+	padding: 20px 30px;
+	background-color: #1f1f1f;
+	border-style: none;
+	border-radius: 25px;
 }
 
 input {
-  display: inline;
+	display: inline;
 }
 
 .search-bar input {
-  background-color: #282828;
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 15px;
-  border-radius: 30px;
-  padding: 0 15px;
-  border-style: none;
-  width: 250px;
-  height: 35px;
+	background-color: #282828;
+	color: #ffffff;
+	font-weight: 400;
+	font-size: 15px;
+	border-radius: 30px;
+	padding: 0 15px;
+	border-style: none;
+	width: 250px;
+	height: 35px;
 }
 
 .search-button {
-  background: linear-gradient(
-    90deg,
-    rgb(245, 98, 224) 0%,
-    rgb(45, 108, 255) 100%
-  );
-  border-style: none;
-  border-radius: 30px;
-  margin-left: -45px;
-  width: 35px;
-  height: 25px;
-  padding: 1px;
+	background: linear-gradient(
+		90deg,
+		rgb(245, 98, 224) 0%,
+		rgb(45, 108, 255) 100%
+	);
+	border-style: none;
+	border-radius: 30px;
+	margin-left: -45px;
+	width: 35px;
+	height: 25px;
+	padding: 1px;
 }
 
 .search-icon {
-  width: 21px;
-  margin: 0;
-  padding-bottom: 3px;
+	width: 21px;
+	margin: 0;
+	padding-bottom: 3px;
 }
 
 .location-button {
-  background: none;
-  border-style: none;
-  line-height: 0;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 7px;
+	background: none;
+	border-style: none;
+	line-height: 0;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 7px;
 }
 
 .location-icon {
-  color: whitesmoke;
-  text-align: center;
-  font-size: 23px;
-  line-height: 0;
-  margin: 0px;
-  padding: 0px 0px 0px 0px;
-  position: relative;
-  top: 3px;
+	color: whitesmoke;
+	text-align: center;
+	font-size: 23px;
+	line-height: 0;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	position: relative;
+	top: 3px;
 }
 
 .city-name {
-  font-family: "Jost", sans-serif;
-  color: whitesmoke;
-  text-transform: capitalize;
-  font-size: 45px;
-  font-weight: 500;
-  letter-spacing: 5px;
-  line-height: 1.3;
-  margin-top: 20px;
-  margin-bottom: 5px;
+	font-family: "Jost", sans-serif;
+	color: whitesmoke;
+	text-transform: capitalize;
+	font-size: 45px;
+	font-weight: 500;
+	letter-spacing: 5px;
+	line-height: 1.3;
+	margin-top: 20px;
+	margin-bottom: 5px;
 }
 
 .current-date {
-  color: #848484;
-  font-size: 14px;
-  font-weight: 400;
+	color: #848484;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 .current-weather-row {
-  background-color: none;
-  margin: 0 auto;
-  max-height: 155px;
-  width: auto;
-  display: flex;
-  flex-wrap: nowrap;
+	background-color: none;
+	margin: 0 auto;
+	max-height: 155px;
+	width: auto;
+	display: flex;
+	flex-wrap: nowrap;
 }
 
 .weather-icon-box {
-  max-width: 160px;
-  height: auto;
-  margin: 0;
-  padding: 0;
+	max-width: 160px;
+	height: auto;
+	margin: 0;
+	padding: 0;
 }
 
 .weather-icon-1 {
-  display: block;
-  margin: 0;
-  width: 150px;
+	display: block;
+	margin: 0;
+	width: 150px;
 }
 
 .weather-description {
-  color: whitesmoke;
-  text-transform: lowercase;
-  font-size: 13px;
-  padding-top: 14px;
-  padding-bottom: 0px;
-  line-height: 0;
+	color: whitesmoke;
+	text-transform: lowercase;
+	font-size: 13px;
+	padding-top: 14px;
+	padding-bottom: 0px;
+	line-height: 0;
 }
 
 .weather-description::first-letter {
-  color: whitesmoke;
-  text-transform: capitalize;
-  font-size: 13px;
-  padding-bottom: 0px;
-  line-height: 0;
+	color: whitesmoke;
+	text-transform: capitalize;
+	font-size: 13px;
+	padding-bottom: 0px;
+	line-height: 0;
 }
 
 .current-temperature-box {
-  display: inline;
-  max-width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
+	display: inline;
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
 }
 
 .current-temperature {
-  font-family: "Jost";
-  text-align: left;
-  letter-spacing: 0;
-  color: whitesmoke;
-  font-size: 130px;
-  padding: 0;
-  margin: 0;
-  margin-top: 6px;
-  line-height: 1;
+	font-family: "Jost";
+	text-align: left;
+	letter-spacing: 0;
+	color: whitesmoke;
+	font-size: 130px;
+	padding: 0;
+	margin: 0;
+	margin-top: 6px;
+	line-height: 1;
 }
 
 .degree-symbol {
-  font-family: "Jost";
-  text-align: left;
-  color: whitesmoke;
-  font-size: 110px;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
+	font-family: "Jost";
+	text-align: left;
+	color: whitesmoke;
+	font-size: 110px;
+	padding: 0;
+	margin: 0;
+	line-height: 1;
 }
 
 .celsius-fahrenheit-box {
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 44px 0px 0px 5px;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 44px 0px 0px 5px;
 }
 
 .celsius-fahrenheit {
-  font-family: "Jost";
-  color: whitesmoke;
-  font-weight: 400;
-  font-size: 27px;
-  padding: 5px 5px 5px;
-  letter-spacing: 1.5px;
-  line-height: 1.5;
-  text-decoration: none;
+	font-family: "Jost";
+	color: whitesmoke;
+	font-weight: 400;
+	font-size: 27px;
+	padding: 5px 5px 5px;
+	letter-spacing: 1.5px;
+	line-height: 1.5;
+	text-decoration: none;
 }
 
 .forecast {
-  color: whitesmoke;
-  text-align: left;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 1.2px;
-  margin: 20px 0px 5px 0px;
+	color: whitesmoke;
+	text-align: left;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 1.2px;
+	margin: 20px 0px 5px 0px;
 }
 
 .row-weather-forecast {
-  background: none;
-  border-radius: 20px;
-  margin: 5px 0 0 0;
-  padding: 0;
+	background: none;
+	border-radius: 20px;
+	margin: 5px 0 0 0;
+	padding: 0;
 }
 
 .weather-forecast .col-md {
-  margin: 0;
-  padding: 0px 5px 0px 5px;
-  width: 90px;
-  height: 170px;
+	margin: 0;
+	padding: 0px 5px 0px 5px;
+	width: 90px;
+	height: 170px;
 }
 
 .weather-forecast .card {
-  background: linear-gradient(
-    180deg,
-    rgb(245, 98, 224) 0%,
-    rgb(45, 108, 255) 100%
-  );
-  border-style: none;
-  color: whitesmoke;
-  border-radius: 70px;
-  margin: 5px 5px;
-  padding: 20px 0 20px 0;
-  width: 80px;
-  height: 160px;
+	background: linear-gradient(
+		180deg,
+		rgb(245, 98, 224) 0%,
+		rgb(45, 108, 255) 100%
+	);
+	border-style: none;
+	color: whitesmoke;
+	border-radius: 70px;
+	margin: 5px 5px;
+	padding: 20px 0 20px 0;
+	width: 80px;
+	height: 160px;
 }
 
 .weather-forecast .card-body {
-  width: 65px;
-  height: 120px;
-  padding: 0;
-  margin: 0 auto;
+	width: 65px;
+	height: 120px;
+	padding: 0;
+	margin: 0 auto;
 }
 
 .weather-forecast .card-title {
-  font-family: "DM sans";
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0 0 15px 0;
+	font-family: "DM sans";
+	text-align: center;
+	font-size: 14px;
+	font-weight: 500;
+	margin: 0 0 15px 0;
 }
 
 .weather-forecast .card-text {
-  font-family: "DM Sans";
-  text-align: center;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1;
-  margin: 10px 0;
+	font-family: "DM Sans";
+	text-align: center;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1;
+	margin: 10px 0;
 }
 
 .weather-forecast .weather-icon-2 {
-  display: block;
-  margin: 0 auto;
-  width: 35px;
+	display: block;
+	margin: 0 auto;
+	width: 35px;
 }
 
 footer {
-  color: whitesmoke;
-  font-size: 10px;
-  font-weight: 300;
-  font-family: "DM Sans";
-  letter-spacing: 1px;
-  margin: 0px 0px 0 20px;
-  padding: 0;
+	color: whitesmoke;
+	font-size: 10px;
+	font-weight: 300;
+	font-family: "DM Sans";
+	letter-spacing: 1px;
+	margin: 0px 0px 0 20px;
+	padding: 0;
 }
 
 .github-link {
-  color: rgb(45, 108, 255);
+	color: rgb(45, 108, 255);
 }
