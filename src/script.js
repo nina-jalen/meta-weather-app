@@ -56,6 +56,8 @@ function showTemperature(response) {
 	document
 		.querySelector("#weather-icon")
 		.setAttribute("alt", response.data.weather[0].description)
+
+	celsiusTemperature = response.data.main.temp
 }
 
 function searchCity(city) {
@@ -101,3 +103,30 @@ function findGeoLocation(event) {
 
 let locationButton = document.querySelector("#current-location")
 locationButton.addEventListener("click", findGeoLocation)
+
+//
+//
+//
+//
+// Fahrenheit to Celsius conversion
+
+// function displayFahreheitTemperature(event) {
+// 	event.preventDefault()
+// 	let temperatureElement = document.querySelector("#current-temperature")
+// 	let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32
+// 	temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`
+// }
+
+// function displayCelsiusTemperature(event) {
+// 	event.preventDefault()
+// 	let temperatureElement = document.querySelector("#current-temperature")
+// 	temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°`
+// }
+
+// let fahrenheit = document.querySelector("#fahrenheit-link")
+// fahrenheit.addEventListener("click", displayFahreheitTemperature)
+
+// let celsiusTemperature = null
+
+// let celsius = document.querySelector("#celsius-link")
+// celsius.addEventListener("click", displayCelsiusTemperature)

@@ -12,7 +12,6 @@ body {
 }
 
 .weather-container {
-	max-width: 785px;
 	width: 785px;
 	margin: 20px 0 5px 0;
 	padding: 20px 30px;
@@ -31,9 +30,9 @@ input {
 	font-weight: 400;
 	font-size: 15px;
 	border-radius: 30px;
-	padding: 0 15px;
+	padding: 0 15px 0 36px;
 	border-style: none;
-	width: 250px;
+	width: 295px;
 	height: 35px;
 }
 
@@ -66,14 +65,13 @@ input {
 }
 
 .location-icon {
-	color: whitesmoke;
-	text-align: center;
-	font-size: 23px;
+	right: 293px;
+	top: -2px;
+	width: 24px;
 	line-height: 0;
 	margin: 0px;
 	padding: 0px 0px 0px 0px;
 	position: relative;
-	top: 3px;
 }
 
 .city-name {
@@ -83,9 +81,9 @@ input {
 	font-size: 45px;
 	font-weight: 500;
 	letter-spacing: 5px;
-	line-height: 1.3;
+	line-height: 1.1;
 	margin-top: 20px;
-	margin-bottom: 5px;
+	margin-bottom: 0;
 }
 
 .current-date {
@@ -163,10 +161,10 @@ input {
 	line-height: 1;
 }
 
-.celsius-fahrenheit-box {
-	width: auto;
-	height: auto;
-	margin: 0;
+/* .celsius-fahrenheit-box { */
+	/* width: auto; */
+	/* height: auto; */
+	/* margin: 0;
 	padding: 44px 0px 0px 5px;
 }
 
@@ -179,7 +177,7 @@ input {
 	letter-spacing: 1.5px;
 	line-height: 1.5;
 	text-decoration: none;
-}
+} */
 
 .forecast {
 	color: whitesmoke;
