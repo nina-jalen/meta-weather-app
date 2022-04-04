@@ -38,10 +38,12 @@ dateElement.innerHTML = formatDate(currentTime)
 //
 //
 //
-// Search engine
+// Search engine & Current weather
 
 function showTemperature(response) {
-	document.querySelector("#current-city").innerHTML = response.data.name
+	document.querySelector(
+		"#current-city"
+	).innerHTML = `${response.data.name}, ${response.data.sys.country}`
 	document.querySelector("#current-temperature").innerHTML = `${Math.round(
 		response.data.main.temp
 	)}°`
@@ -56,6 +58,18 @@ function showTemperature(response) {
 	document
 		.querySelector("#weather-icon")
 		.setAttribute("alt", response.data.weather[0].description)
+
+	document.querySelector("#wind-value").innerHTML = `${Math.round(
+		response.data.wind.speed
+	)} km/h`
+	document.querySelector(
+		"#humidity-value"
+	).innerHTML = `${response.data.main.humidity}%`
+	let visibility = response.data.visibility / 1000
+	document.querySelector("#visibility-value").innerHTML = `${visibility} km`
+	document.querySelector(
+		"#pressure-value"
+	).innerHTML = `${response.data.main.pressure} hPa`
 
 	celsiusTemperature = response.data.main.temp
 }
