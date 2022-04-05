@@ -124,23 +124,27 @@ locationButton.addEventListener("click", findGeoLocation)
 //
 // Fahrenheit to Celsius conversion
 
-// function displayFahreheitTemperature(event) {
-// 	event.preventDefault()
-// 	let temperatureElement = document.querySelector("#current-temperature")
-// 	let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32
-// 	temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`
-// }
+function displayFahreheitTemperature(event) {
+	event.preventDefault()
+	let temperatureElement = document.querySelector("#current-temperature")
+	let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32
+	temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`
+	celsius.classList.remove("active")
+	fahrenheit.classList.add("active")
+}
 
-// function displayCelsiusTemperature(event) {
-// 	event.preventDefault()
-// 	let temperatureElement = document.querySelector("#current-temperature")
-// 	temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°`
-// }
+function displayCelsiusTemperature(event) {
+	event.preventDefault()
+	celsius.classList.add("active")
+	fahrenheit.classList.remove("active")
+	let temperatureElement = document.querySelector("#current-temperature")
+	temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°`
+}
 
-// let fahrenheit = document.querySelector("#fahrenheit-link")
-// fahrenheit.addEventListener("click", displayFahreheitTemperature)
+let fahrenheit = document.querySelector("#fahrenheit-link")
+fahrenheit.addEventListener("click", displayFahreheitTemperature)
 
-// let celsiusTemperature = null
+let celsiusTemperature = null
 
-// let celsius = document.querySelector("#celsius-link")
-// celsius.addEventListener("click", displayCelsiusTemperature)
+let celsius = document.querySelector("#celsius-link")
+celsius.addEventListener("click", displayCelsiusTemperature)
