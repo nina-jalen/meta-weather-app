@@ -38,6 +38,20 @@ dateElement.innerHTML = formatDate(currentTime)
 //
 //
 //
+// Get forecast
+
+function getForecast(coordinates) {
+	let apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
+	let apiUrl = `
+	https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+
+	axios.get(apiUrl).then(displayForecast)
+}
+
+//
+//
+//
+//
 // Search engine & Current weather
 
 function showTemperature(response) {
@@ -72,13 +86,15 @@ function showTemperature(response) {
 	).innerHTML = `${response.data.main.pressure} hPa`
 
 	celsiusTemperature = response.data.main.temp
+
+	getForecast(response.data.coord)
 }
 
 function searchCity(city) {
-	let apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
+	apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
 	let units = "metric"
 	let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=`
-	let apiUrl = `${apiEndpoint}${city}&appid=${apiKey}&units=${units}`
+	apiUrl = `${apiEndpoint}${city}&appid=${apiKey}&units=${units}`
 	axios.get(apiUrl).then(showTemperature)
 }
 
@@ -91,7 +107,6 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form")
 form.addEventListener("click", handleSubmit)
 
-// Default weather
 searchCity("Innsbruck")
 
 //
@@ -153,9 +168,9 @@ celsius.addEventListener("click", displayCelsiusTemperature)
 //
 //
 //
-// Weather forecast
+// Display forecast
 
-function displayForecast() {
+function displayForecast(response) {
 	let forecastElement = document.querySelector("#forecast")
 
 	let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"]
@@ -184,7 +199,6 @@ function displayForecast() {
 	})
 	forecastHTML = forecastHTML + `</div>`
 	forecastElement.innerHTML = forecastHTML
-	// console.log(forecastHTML)
 }
 
 displayForecast()
