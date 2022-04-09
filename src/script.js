@@ -38,6 +38,20 @@ dateElement.innerHTML = formatDate(currentTime)
 //
 //
 //
+// Forecast days
+
+function formatDay(timestamp) {
+	let date = new Date(timestamp * 1000)
+	day = date.getDay()
+	days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+	return days[day]
+}
+
+//
+//
+//
+//
 // Get forecast
 
 function getForecast(coordinates) {
@@ -171,31 +185,33 @@ celsius.addEventListener("click", displayCelsiusTemperature)
 // Display forecast
 
 function displayForecast(response) {
-	let forecastElement = document.querySelector("#forecast")
+	let forecast = response.data.daily
 
-	let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"]
+	let forecastElement = document.querySelector("#forecast")
 
 	let forecastHTML = `<div class="row row-cols-1 row-weather-forecast">`
 
-	days.forEach(function (day) {
-		forecastHTML =
-			forecastHTML +
-			`
+	forecast.forEach(function (forecastDay, index) {
+		if (index < 7) {
+			forecastHTML =
+				forecastHTML +
+				`
 		<div class="col-md">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-day">${day}</h5>
-					<p class="card-temperature-max">13°</p>
+					<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
+					<p class="card-temperature-max">${Math.round(forecastDay.temp.max)}°</p>
 					<img
-						src="images/weather-icon-2.svg"
+						src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
 						alt=""
 						class="weather-icon-2"
 					/>
-					<p class="card-temperature-min">3°</p>
+					<p class="card-temperature-min">${Math.round(forecastDay.temp.min)}°</p>
 				</div>
 			</div>
 		</div>
 	`
+		}
 	})
 	forecastHTML = forecastHTML + `</div>`
 	forecastElement.innerHTML = forecastHTML
