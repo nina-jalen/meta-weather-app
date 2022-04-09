@@ -76,6 +76,7 @@ input {
 
 .city-name {
 	font-family: "Jost", sans-serif;
+	display: inline-block;
 	color: whitesmoke;
 	text-transform: capitalize;
 	font-size: 45px;
@@ -84,6 +85,17 @@ input {
 	line-height: 1.1;
 	margin-top: 20px;
 	margin-bottom: 0;
+}
+
+.country-name {
+	font-family: "Jost", sans-serif;
+	color: #4a4a4a;
+	font-size: 30px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	line-height: 1.1;
+	margin: 20px 0 0 0;
+	opacity: 0.8;
 }
 
 .current-date {
@@ -124,12 +136,14 @@ input {
 	color: whitesmoke;
 	text-transform: lowercase;
 	font-size: 12px;
+	opacity: 0.9;
 }
 
 .weather-description::first-letter {
 	color: whitesmoke;
 	text-transform: capitalize;
 	font-size: 12px;
+	opacity: 0.9;
 }
 
 .current-temperature-box {
@@ -148,6 +162,7 @@ input {
 	font-size: 80px;
 	margin-top: 0px;
 	line-height: 1;
+	opacity: 1;
 }
 
 .factor-col {
@@ -304,24 +319,18 @@ input {
 	font-size: 14px;
 	font-weight: 500;
 	margin: 0 0 15px 0;
+	opacity: 0.9;
 }
 
-.weather-forecast .card-temperature-max {
+.weather-forecast .card-temperature {
 	font-family: "DM Sans";
 	text-align: center;
 	font-size: 13px;
 	font-weight: 400;
 	line-height: 1;
 	margin: 10px 0;
-}
-
-.weather-forecast .card-temperature-min {
-	font-family: "DM Sans";
-	text-align: center;
-	font-size: 13px;
-	font-weight: 400;
-	line-height: 1;
-	margin: 10px 0;
+	letter-spacing: 0.4px;
+	opacity: 0.9;
 }
 
 .weather-forecast .weather-icon-2 {

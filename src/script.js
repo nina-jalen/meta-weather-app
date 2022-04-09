@@ -71,7 +71,9 @@ function getForecast(coordinates) {
 function showTemperature(response) {
 	document.querySelector(
 		"#current-city"
-	).innerHTML = `${response.data.name}, ${response.data.sys.country}`
+	).innerHTML = `${response.data.name}`
+		document.querySelector("#current-country").innerHTML = `${response.data.sys.country}`
+
 	document.querySelector("#current-temperature").innerHTML = `${Math.round(
 		response.data.main.temp
 	)}°`
@@ -87,8 +89,9 @@ function showTemperature(response) {
 		.querySelector("#weather-icon")
 		.setAttribute("alt", response.data.weather[0].description)
 
+	let windValue = response.data.wind.speed * 3.6
 	document.querySelector("#wind-value").innerHTML = `${Math.round(
-		response.data.wind.speed
+		windValue
 	)} km/h`
 	document.querySelector(
 		"#humidity-value"
@@ -200,13 +203,13 @@ function displayForecast(response) {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
-					<p class="card-temperature-max">${Math.round(forecastDay.temp.max)}°</p>
+					<p class="card-temperature">${Math.round(forecastDay.temp.max)}°</p>
 					<img
 						src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
 						alt=""
 						class="weather-icon-2"
 					/>
-					<p class="card-temperature-min">${Math.round(forecastDay.temp.min)}°</p>
+					<p class="card-temperature">${Math.round(forecastDay.temp.min)}°</p>
 				</div>
 			</div>
 		</div>
