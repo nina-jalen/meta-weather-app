@@ -69,10 +69,10 @@ function getForecast(coordinates) {
 // Search engine & Current weather
 
 function showTemperature(response) {
+	document.querySelector("#current-city").innerHTML = `${response.data.name}`
 	document.querySelector(
-		"#current-city"
-	).innerHTML = `${response.data.name}`
-		document.querySelector("#current-country").innerHTML = `${response.data.sys.country}`
+		"#current-country"
+	).innerHTML = `${response.data.sys.country}`
 
 	document.querySelector("#current-temperature").innerHTML = `${Math.round(
 		response.data.main.temp
@@ -140,6 +140,7 @@ function findCurrentLocation(position) {
 	apiEndpoint = `https://api.openweathermap.org/data/2.5/weather`
 	apiUrl = `${apiEndpoint}?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`
 	axios.get(apiUrl).then(showTemperature)
+	axios.get(apiUrlCurrent).then(showCurrentCityWeather)
 }
 
 function findGeoLocation(event) {
@@ -155,14 +156,16 @@ locationButton.addEventListener("click", findGeoLocation)
 //
 //
 // Fahrenheit to Celsius conversion
+// Current temperature
 
 function displayFahreheitTemperature(event) {
 	event.preventDefault()
+	celsius.classList.remove("active")
+	fahrenheit.classList.add("active")
 	let temperatureElement = document.querySelector("#current-temperature")
 	let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32
 	temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`
-	celsius.classList.remove("active")
-	fahrenheit.classList.add("active")
+	convertForecastTemperature("imperial")
 }
 
 function displayCelsiusTemperature(event) {
@@ -171,6 +174,7 @@ function displayCelsiusTemperature(event) {
 	fahrenheit.classList.remove("active")
 	let temperatureElement = document.querySelector("#current-temperature")
 	temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°`
+	convertForecastTemperature("metric")
 }
 
 let fahrenheit = document.querySelector("#fahrenheit-link")
@@ -181,6 +185,40 @@ let celsiusTemperature = null
 let celsius = document.querySelector("#celsius-link")
 celsius.addEventListener("click", displayCelsiusTemperature)
 
+// Fahrenheit to Celsius conversion
+// Forecast temperature
+function convertForecastTemperature(unitType) {
+	forecast.forEach(function (forecastDay, index) {
+		if (index > 0 && index < 8) {
+			let tempMin = `${Math.round(forecastDay.temp.min)}°`
+			let tempMax = `${Math.round(forecastDay.temp.max)}°`
+			let min = document.querySelector("#forecast-min" + index)
+			let max = document.querySelector("#forecast-max" + index)
+			if (unitType === "metric") {
+				min.innerHTML = tempMin
+				max.innerHTML = tempMax
+			} else {
+				min.innerHTML = `${Math.round(
+					(forecastDay.temp.min * 9) / 5 + 32
+				)}°`
+				max.innerHTML = `${Math.round(
+					(forecastDay.temp.min * 9) / 5 + 32
+				)}°`
+			}
+		}
+	})
+}
+
+// Unit conversion
+function showCurrentCityWeather(response) {
+	if (fahrenheit.className === "active") {
+		temperatureElement.innerHTML = Math.round(
+			(celsiusTemperature * 9) / 5 + 32
+		)
+	} else {
+		temperatureElement.innerHTML = Math.round(celsiusTemperature)
+	}
+}
 //
 //
 //
@@ -188,14 +226,14 @@ celsius.addEventListener("click", displayCelsiusTemperature)
 // Display forecast
 
 function displayForecast(response) {
-	let forecast = response.data.daily
+	forecast = response.data.daily
 
 	let forecastElement = document.querySelector("#forecast")
 
 	let forecastHTML = `<div class="row row-cols-1 row-weather-forecast">`
 
 	forecast.forEach(function (forecastDay, index) {
-		if (index < 7) {
+		if (index > 0 && index < 8) {
 			forecastHTML =
 				forecastHTML +
 				`
@@ -203,13 +241,17 @@ function displayForecast(response) {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
-					<p class="card-temperature">${Math.round(forecastDay.temp.max)}°</p>
+					<p class="card-temperature" id="forecast-max${index}">${Math.round(
+					forecastDay.temp.max
+				)}°</p>
 					<img
 						src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
-						alt=""
+						alt="${forecastDay.weather[0].description}"
 						class="weather-icon-2"
 					/>
-					<p class="card-temperature">${Math.round(forecastDay.temp.min)}°</p>
+					<p class="card-temperature" id="forecast-min${index}">${Math.round(
+					forecastDay.temp.min
+				)}°</p>
 				</div>
 			</div>
 		</div>
@@ -218,6 +260,12 @@ function displayForecast(response) {
 	})
 	forecastHTML = forecastHTML + `</div>`
 	forecastElement.innerHTML = forecastHTML
+	if (fahrenheit.className === "active") {
+		convertForecastTemperature("imperial")
+	}
 }
+
+let forecast = null
+let units = "metric"
 
 displayForecast()
