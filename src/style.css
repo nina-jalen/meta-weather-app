@@ -126,7 +126,7 @@ input {
 	height: 90px;
 }
 
-.weather-icon-1 {
+.current-icon {
 	display: block;
 	margin: 0;
 	width: 90px;
@@ -333,7 +333,7 @@ input {
 	opacity: 0.9;
 }
 
-.weather-forecast .weather-icon-2 {
+.weather-forecast .forecast-icon {
 	display: block;
 	margin: 0 auto;
 	width: 35px;

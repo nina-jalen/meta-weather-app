@@ -80,13 +80,13 @@ function showTemperature(response) {
 	document.querySelector("#weather-description").innerHTML =
 		response.data.weather[0].description
 	document
-		.querySelector("#weather-icon")
+		.querySelector("#current-icon")
 		.setAttribute(
 			"src",
-			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+			`images/icons/${response.data.weather[0].icon}.svg`
 		)
 	document
-		.querySelector("#weather-icon")
+		.querySelector("#current-icon")
 		.setAttribute("alt", response.data.weather[0].description)
 
 	let windValue = response.data.wind.speed * 3.6
@@ -245,9 +245,9 @@ function displayForecast(response) {
 					forecastDay.temp.max
 				)}°</p>
 					<img
-						src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+						src="images/icons/${forecastDay.weather[0].icon}.svg"
 						alt="${forecastDay.weather[0].description}"
-						class="weather-icon-2"
+						class="forecast-icon"
 					/>
 					<p class="card-temperature" id="forecast-min${index}">${Math.round(
 					forecastDay.temp.min
