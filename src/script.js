@@ -27,7 +27,28 @@ function formatDate(date) {
 	]
 	let day = days[dayIndex]
 
-	return `${day} ${hour}:${minute}`
+	let nrDate = date.getDate()
+
+	let months = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"April",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
+	]
+
+	let month = months[date.getMonth()]
+
+	let year = date.getFullYear()
+
+	return `${day} ${nrDate} ${month}, ${hour}:${minute}`
 }
 
 let currentTime = new Date()
@@ -38,37 +59,10 @@ dateElement.innerHTML = formatDate(currentTime)
 //
 //
 //
-// Forecast days
-
-function formatDay(timestamp) {
-	let date = new Date(timestamp * 1000)
-	day = date.getDay()
-	days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
-	return days[day]
-}
-
-//
-//
-//
-//
-// Get forecast
-
-function getForecast(coordinates) {
-	let apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
-	let apiUrl = `
-	https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
-
-	axios.get(apiUrl).then(displayForecast)
-}
-
-//
-//
-//
-//
 // Search engine & Current weather
 
 function showTemperature(response) {
+	// console.log(response.data.wind.speed * 0.001 * 3600)
 	document.querySelector("#current-city").innerHTML = `${response.data.name}`
 	document.querySelector(
 		"#current-country"
@@ -89,18 +83,10 @@ function showTemperature(response) {
 		.querySelector("#current-icon")
 		.setAttribute("alt", response.data.weather[0].description)
 
-	let windValue = response.data.wind.speed * 3.6
-	document.querySelector("#wind-value").innerHTML = `${Math.round(
-		windValue
+	let windValue = `${Math.round(
+		response.data.wind.speed * 0.001 * 3600
 	)} km/h`
-	document.querySelector(
-		"#humidity-value"
-	).innerHTML = `${response.data.main.humidity}%`
-	let visibility = response.data.visibility / 1000
-	document.querySelector("#visibility-value").innerHTML = `${visibility} km`
-	document.querySelector(
-		"#pressure-value"
-	).innerHTML = `${response.data.main.pressure} hPa`
+	document.querySelector("#wind-value").innerHTML = windValue
 
 	celsiusTemperature = response.data.main.temp
 
@@ -130,7 +116,7 @@ searchCity("Innsbruck")
 //
 //
 //
-// Current Location button
+// Current location button
 
 function findCurrentLocation(position) {
 	let lat = position.coords.latitude
@@ -140,7 +126,7 @@ function findCurrentLocation(position) {
 	apiEndpoint = `https://api.openweathermap.org/data/2.5/weather`
 	apiUrl = `${apiEndpoint}?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`
 	axios.get(apiUrl).then(showTemperature)
-	axios.get(apiUrlCurrent).then(showCurrentCityWeather)
+	axios.get(apiUrlCurrent).then(showCurrentTemperature)
 }
 
 function findGeoLocation(event) {
@@ -210,7 +196,7 @@ function convertForecastTemperature(unitType) {
 }
 
 // Unit conversion
-function showCurrentCityWeather(response) {
+function showCurrentTemperature(response) {
 	if (fahrenheit.className === "active") {
 		temperatureElement.innerHTML = Math.round(
 			(celsiusTemperature * 9) / 5 + 32
@@ -219,6 +205,35 @@ function showCurrentCityWeather(response) {
 		temperatureElement.innerHTML = Math.round(celsiusTemperature)
 	}
 }
+
+//
+//
+//
+//
+// Forecast days
+
+function formatDay(timestamp) {
+	let date = new Date(timestamp * 1000)
+	day = date.getDay()
+	days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+	return days[day]
+}
+
+//
+//
+//
+//
+// Get forecast
+
+function getForecast(coordinates) {
+	let apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
+	let apiUrl = `
+	https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+
+	axios.get(apiUrl).then(displayForecast)
+}
+
 //
 //
 //
@@ -237,24 +252,24 @@ function displayForecast(response) {
 			forecastHTML =
 				forecastHTML +
 				`
-		<div class="col-md">
-			<div class="card">
+				<div class="col-md">
+				<div class="card">
 				<div class="card-body">
-					<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
+				<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
 					<p class="card-temperature" id="forecast-max${index}">${Math.round(
 					forecastDay.temp.max
 				)}°</p>
-					<img
-						src="images/icons/${forecastDay.weather[0].icon}.svg"
-						alt="${forecastDay.weather[0].description}"
+				<img
+				src="images/icons/${forecastDay.weather[0].icon}.svg"
+				alt="${forecastDay.weather[0].description}"
 						class="forecast-icon"
-					/>
+						/>
 					<p class="card-temperature" id="forecast-min${index}">${Math.round(
 					forecastDay.temp.min
 				)}°</p>
-				</div>
+					</div>
 			</div>
-		</div>
+			</div>
 	`
 		}
 	})

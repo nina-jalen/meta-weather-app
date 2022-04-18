@@ -7,17 +7,20 @@ body {
 	max-width: 785px;
 	width: 100%;
 	margin: 35px auto;
-	padding-right: 20px;
-	padding-left: 20px;
+	padding: 0 20px;
 }
 
 .weather-container {
-	width: 785px;
+	max-width: 785px;
 	margin: 20px 0 5px 0;
 	padding: 20px 30px;
-	background-color: #1f1f1f;
-	border-style: none;
 	border-radius: 25px;
+	background-color: #1f1f1f;
+	box-shadow: 0 0 25px 15px rgb(255 255 255 / 15%);
+	background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/032/156/original/pexels-joe-10769156.jpg?1650279191);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 input {
@@ -26,7 +29,7 @@ input {
 
 .search-bar input {
 	background-color: #282828;
-	color: #ffffff;
+	color: #f5f5f5;
 	font-weight: 400;
 	font-size: 15px;
 	border-radius: 30px;
@@ -34,6 +37,7 @@ input {
 	border-style: none;
 	width: 280px;
 	height: 35px;
+	opacity: 1;
 }
 
 .search-button {
@@ -60,8 +64,8 @@ input {
 	background: none;
 	border-style: none;
 	line-height: 0;
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 7px;
+	padding: 0;
+	margin: 0 0 0 7px;
 }
 
 .location-icon {
@@ -71,13 +75,13 @@ input {
 	margin: 0;
 	padding: 0;
 	position: relative;
-	color: whitesmoke;
+	color: #f5f5f5;
 }
 
 .city-name {
 	font-family: "Jost", sans-serif;
 	display: inline-block;
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-transform: capitalize;
 	font-size: 45px;
 	font-weight: 500;
@@ -95,23 +99,23 @@ input {
 	letter-spacing: 0.1em;
 	line-height: 1.1;
 	margin: 20px 0 5px 0;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .current-date {
 	color: #848484;
 	font-size: 14px;
 	font-weight: 400;
-	margin-bottom: 10px;
+	margin: 3px 0 30px 0;
+	line-height: 1.4;
+	opacity: 0.95;
 }
 
 .current-weather-row {
 	background-color: none;
-	margin: 0;
+	margin: 0 0 20px 0;
 	height: 115px;
 	width: 100%;
-	/* border-style: solid; */
-	/* border-color: red; */
 }
 
 .col-3 {
@@ -131,29 +135,30 @@ input {
 
 .current-icon {
 	display: block;
-	margin: -15px 0px 0px 0px;
+	margin: -15px 0 0 0;
 	width: 145px;
 }
 
 .weather-description {
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-transform: lowercase;
 	font-size: 13px;
-	opacity: 0.97;
+	opacity: 0.95;
 	line-height: 1;
 }
 
 .weather-description::first-letter {
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-transform: capitalize;
 	font-size: 13px;
-	opacity: 0.97;
+	opacity: 0.95;
 	line-height: 1;
 }
 
 .current-temperature-box {
 	display: inline-block;
 	max-width: 100%;
+	width: 145px;
 	height: 115px;
 	margin: 0;
 	padding: 0;
@@ -162,126 +167,82 @@ input {
 .current-temperature {
 	font-family: "Jost";
 	text-align: left;
-	color: whitesmoke;
-	/* background: linear-gradient(280deg, rgb(245, 245, 245) 0%, rgb(31, 31, 31) 100%); */
- 	/* -webkit-background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
+	color: #f5f5f5;
 	font-size: 110px;
 	line-height: 1;
-	opacity: 0.97;
-	margin: 5px 0px 0px 0px;
-}
-
-.factor-col {
-	height: auto;
-	padding: 0;
-	display: inline-block;
-	margin: 0;
-	flex: auto;
-	width: auto;
-}
-
-.factor-row {
-	/* border-style: solid; */
-	/* border-color: blue; */
-	padding: 0;
-	display: inline-flex;
-	margin: 0;
-	width: 476px;
-	height: 100%;
-	float: none;
-	background-color: #282828;
-	border-radius: 25px;
-	flex-wrap: nowrap;
-}
-
-.factor-box {
-	/* border-style: solid; */
-	/* border-color: yellow; */
-	display: block;
-	margin: 0;
-	text-align: center;
-	padding: 14px 0px 0px 0px;
-	width: 95px;
-	height: 80px;
-	max-width: initial;
-}
-
-.pointer-value {
-	color: #848484;
-	font-size: 10px;
-	width: 0;
-	display: block;
-	height: 0px;
-	float: none;
-	position: relative;
-	left: 30px;
-	top: 7px;
-}
-
-.factor-icon {
-	color: whitesmoke;
-	font-size: 20px;
-	line-height: 1;
-	display: contents;
-}
-
-.factor-value {
-	font-family: "Jost", sans-serif;
-	color: whitesmoke;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.9;
-	padding: 0;
-	margin: 0;
-}
-
-.factor-description {
-	color: #848484;
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 1;
-	padding: 0;
-	margin: 0;
+	opacity: 0.95;
+	margin: 5px 0 0 0;
 }
 
 .celsius-description {
 	color: #848484;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1.9;
-	display: block;
+	display: inline;
 	float: none;
 	text-decoration: none;
+	opacity: 0.97;
+	margin: 0 3px 0 0;
 }
 
 .fahrenheit-description {
 	color: #848484;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1;
-	display: block;
+	display: inline;
 	float: none;
 	text-decoration: none;
+	opacity: 0.97;
+	margin: 0 3px 0 0;
 }
 
 .active {
-	color: whitesmoke;
+	color: #f5f5f5;
 	font-size: 14px;
 	cursor: default;
-	text-decoration: none;
+	background-color: #282828;
+	padding: 4px 10px;
+	border-style: none;
+	border-radius: 20px;
+	opacity: 0.97;
+	margin: 0 3px 0 0;
 }
 
 .active:hover {
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-decoration: none;
 }
 
+.wind-description {
+	display: inline;
+	color: #848484;
+	font-size: 14px;
+	font-weight: 400;
+	background-color: #282828;
+	margin: 0 0 0 10px;
+	padding: 4px 10px;
+	opacity: 0.97;
+	border-style: none;
+	border-radius: 20px;
+}
+
+.wind-value {
+	display: inline;
+	color: #f5f5f5;
+	font-size: 14px;
+	font-weight: 400;
+	margin: 0 0 0 10px;
+	opacity: 0.97;
+	padding-left: 4px;
+}
+
 .forecast-text {
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-align: left;
 	font-size: 18px;
 	font-weight: 400;
 	letter-spacing: 1.2px;
-	margin: 20px 0px 5px 0px;
+	margin: 25px 0 5px 0;
 }
 
 .row-weather-forecast {
@@ -293,7 +254,7 @@ input {
 
 .weather-forecast .col-md {
 	margin: 0;
-	padding: 0px 5px 0px 5px;
+	padding: 0 5px 0 5px;
 	width: 90px;
 	height: 170px;
 }
@@ -305,10 +266,10 @@ input {
 		rgb(45, 108, 255) 100%
 	);
 	border-style: none;
-	color: whitesmoke;
+	color: #f5f5f5;
 	border-radius: 70px;
-	margin: 5px 5px;
-	padding: 20px 0 20px 0;
+	margin: 5px;
+	padding: 20px 0;
 	width: 80px;
 	height: 160px;
 }
@@ -347,15 +308,27 @@ input {
 }
 
 footer {
-	color: whitesmoke;
-	font-size: 10px;
+	display: block;
+	text-align: center;
+	color: #000;
+	font-size: 8px;
 	font-weight: 300;
 	font-family: "DM Sans";
 	letter-spacing: 1px;
-	margin: 0px 0px 0 20px;
+	margin: 0 0 0 20px;
 	padding: 0;
+	opacity: 0.95;
 }
 
 .github-link {
-	color: rgb(45, 108, 255);
+	color: #000;
+	text-decoration: none;
+	opacity: 0.95;
+}
+
+.logo {
+	display: block;
+	margin: -15px auto -25px;
+	height: 120px;
+	opacity: 0.95;
 }

@@ -61,7 +61,6 @@
 				<div class="city-name" id="current-city"></div>
 				<span class="country-name" id="current-country"></span>
 				<div class="current-date" id="current-date"></div>
-				<br />
 				<!-- :: Current weather :: -->
 				<div class="row justify-content-start current-weather-row">
 					<div class="col-3 weather-icon-box">
@@ -82,65 +81,27 @@
 							id="current-temperature"
 						></div>
 					</div>
-					<div class="col-6 factor-col">
-						<div class="row row-cols-2 factor-row">
-							<!-- : Fahrenheit to Celsius : -->
-							<div class="col factor-box">
-								<i
-									class="fa-solid fa-temperature-three-quarters factor-icon"
-								></i>
-								<a
-									href="#"
-									class="celsius-description active"
-									id="celsius-link"
-									>Celsius</a
-								>
-								<a
-									href="#"
-									class="fahrenheit-description"
-									id="fahrenheit-link"
-									>Fahrenheit</a
-								>
-							</div>
-							<div class="col factor-box">
-								<i class="fa-solid fa-wind factor-icon"></i>
-								<div class="factor-value" id="wind-value"></div>
-								<div class="factor-description">Wind</div>
-							</div>
-							<div class="col factor-box">
-								<i class="fa-solid fa-droplet factor-icon"></i>
-								<div
-									class="factor-value"
-									id="humidity-value"
-								></div>
-								<div class="factor-description">Humidity</div>
-							</div>
-							<div class="col factor-box">
-								<i class="fa-solid fa-eye factor-icon"></i>
-								<div
-									class="factor-value"
-									id="visibility-value"
-								></div>
-								<div class="factor-description">Visibility</div>
-							</div>
-							<div class="col factor-box">
-								<i
-									class="fa-solid fa-gauge-high factor-icon"
-								></i>
-								<div
-									class="factor-value"
-									id="pressure-value"
-								></div>
-								<div class="factor-description">Pressure</div>
-							</div>
-						</div>
-					</div>
+				</div>
+				<a href="#" class="celsius-description active" id="celsius-link"
+					>°C</a
+				>
+				<a href="#" class="fahrenheit-description" id="fahrenheit-link"
+					>°F</a
+				>
+				<div class="wind-description">
+					Wind speed
+					<div class="wind-value" id="wind-value"></div>
 				</div>
 				<!-- :: Weather forecast :: -->
-				<div class="forecast-text">Next 7 Days &nbsp;</div>
+				<div class="forecast-text">Next 7 Days</div>
 				<div class="weather-forecast" id="forecast"></div>
 			</div>
 			<footer>
+				<img
+					src="images/Avatar Idol-logos_transparent.png"
+					alt="avatar-idol"
+					class="logo"
+				/>
 				<a
 					href="https://github.com/nina-jalen/meta-weather-app"
 					target="_blank"
