@@ -16,11 +16,6 @@ body {
 	padding: 20px 30px;
 	border-radius: 25px;
 	background-color: #1f1f1f;
-	box-shadow: 0 0 25px 15px rgb(255 255 255 / 15%);
-	background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/032/156/original/pexels-joe-10769156.jpg?1650279191);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 input {
@@ -231,8 +226,8 @@ input {
 	color: #f5f5f5;
 	font-size: 14px;
 	font-weight: 400;
-	margin: 0 0 0 10px;
 	opacity: 0.97;
+	margin: 0;
 	padding-left: 4px;
 }
 

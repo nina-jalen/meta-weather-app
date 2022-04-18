@@ -33,7 +33,7 @@ function formatDate(date) {
 		"Jan",
 		"Feb",
 		"Mar",
-		"April",
+		"Apr",
 		"May",
 		"Jun",
 		"Jul",
@@ -48,7 +48,7 @@ function formatDate(date) {
 
 	let year = date.getFullYear()
 
-	return `${day} ${nrDate} ${month}, ${hour}:${minute}`
+	return `${day} ${nrDate} ${month}&nbsp;&nbsp;${hour}:${minute}`
 }
 
 let currentTime = new Date()
@@ -62,7 +62,6 @@ dateElement.innerHTML = formatDate(currentTime)
 // Search engine & Current weather
 
 function showTemperature(response) {
-	// console.log(response.data.wind.speed * 0.001 * 3600)
 	document.querySelector("#current-city").innerHTML = `${response.data.name}`
 	document.querySelector(
 		"#current-country"
