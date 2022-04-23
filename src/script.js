@@ -103,6 +103,8 @@ function searchCity(city) {
 function handleSubmit(event) {
 	event.preventDefault()
 	let city = document.querySelector("#search-text-input").value
+	celsiusLink.classList.add("active")
+	fahrenheitLink.classList.remove("active")
 	searchCity(city)
 }
 
@@ -145,8 +147,8 @@ locationButton.addEventListener("click", findGeoLocation)
 
 function displayFahreheitTemperature(event) {
 	event.preventDefault()
-	celsius.classList.remove("active")
-	fahrenheit.classList.add("active")
+	celsiusLink.classList.remove("active")
+	fahrenheitLink.classList.add("active")
 	let temperatureElement = document.querySelector("#current-temperature")
 	let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32
 	temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`
@@ -155,20 +157,20 @@ function displayFahreheitTemperature(event) {
 
 function displayCelsiusTemperature(event) {
 	event.preventDefault()
-	celsius.classList.add("active")
-	fahrenheit.classList.remove("active")
+	celsiusLink.classList.add("active")
+	fahrenheitLink.classList.remove("active")
 	let temperatureElement = document.querySelector("#current-temperature")
 	temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°`
 	convertForecastTemperature("metric")
 }
 
-let fahrenheit = document.querySelector("#fahrenheit-link")
-fahrenheit.addEventListener("click", displayFahreheitTemperature)
+let fahrenheitLink = document.querySelector("#fahrenheit-link")
+fahrenheitLink.addEventListener("click", displayFahreheitTemperature)
 
 let celsiusTemperature = null
 
-let celsius = document.querySelector("#celsius-link")
-celsius.addEventListener("click", displayCelsiusTemperature)
+let celsiusLink = document.querySelector("#celsius-link")
+celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
 // Fahrenheit to Celsius conversion
 // Forecast temperature
@@ -196,7 +198,7 @@ function convertForecastTemperature(unitType) {
 
 // Unit conversion
 function showCurrentTemperature(response) {
-	if (fahrenheit.className === "active") {
+	if (fahrenheitLink.className === "active") {
 		temperatureElement.innerHTML = Math.round(
 			(celsiusTemperature * 9) / 5 + 32
 		)
@@ -274,7 +276,7 @@ function displayForecast(response) {
 	})
 	forecastHTML = forecastHTML + `</div>`
 	forecastElement.innerHTML = forecastHTML
-	if (fahrenheit.className === "active") {
+	if (fahrenheitLink.className === "active") {
 		convertForecastTemperature("imperial")
 	}
 }
