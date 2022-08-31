@@ -1,3 +1,3 @@
 # meta-weather-app
 
-Weather application
+Weather forecast application
