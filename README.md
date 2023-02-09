@@ -1,3 +1,3 @@
-# meta-weather-app
+# Weather Forecast Application
 
-Weather forecast application
+Weather forecast application was build as a final project from SheCodes Plus workshops.
