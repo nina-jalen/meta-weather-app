@@ -62,56 +62,56 @@ dateElement.innerHTML = formatDate(currentTime)
 // Search engine & Current weather
 
 function showTemperature(response) {
-	document.querySelector("#current-city").innerHTML = `${response.data.name}`
+	document.querySelector("#current-city").innerHTML = `${response.data.city}`
 	document.querySelector(
 		"#current-country"
-	).innerHTML = `${response.data.sys.country}`
+	).innerHTML = `${response.data.country}`
 
 	document.querySelector("#current-temperature").innerHTML = `${Math.round(
-		response.data.main.temp
+		response.data.temperature.current
 	)}°`
 	document.querySelector("#weather-description").innerHTML =
-		response.data.weather[0].description
+		response.data.condition.description
 	document
 		.querySelector("#current-icon")
 		.setAttribute(
 			"src",
-			`images/icons/${response.data.weather[0].icon}.svg`
+			`images/icons/${response.data.condition.icon}.svg`
 		)
 	document
 		.querySelector("#current-icon")
-		.setAttribute("alt", response.data.weather[0].description)
+		.setAttribute("alt", response.data.condition.description)
 
 	let windValue = `${Math.round(
 		response.data.wind.speed * 0.001 * 3600
 	)} km/h`
 	document.querySelector("#wind-value").innerHTML = windValue
 
-	celsiusTemperature = response.data.main.temp
+	celsiusTemperature = response.data.temperature.current
 
-	getForecast(response.data.coord)
+	getForecast(response.data.city)
 }
 
 function searchCity(city) {
-	apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
+	apiKey = "7e0645b54e0a0f4c0fa7443bo6fb8tf9"
 	let units = "metric"
-	let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=`
-	apiUrl = `${apiEndpoint}${city}&appid=${apiKey}&units=${units}`
+	let apiEndpoint = `https://api.shecodes.io/weather/v1/current?query=`
+	apiUrl = `${apiEndpoint}${city}&key=${apiKey}&units=${units}`
 	axios.get(apiUrl).then(showTemperature)
 }
 
 function handleSubmit(event) {
 	event.preventDefault()
-	let city = document.querySelector("#search-text-input").value
+	let city = document.querySelector("#search-text-input");
 	celsiusLink.classList.add("active")
 	fahrenheitLink.classList.remove("active")
-	searchCity(city)
+	searchCity(city.value)
 }
 
 let form = document.querySelector("#search-form")
 form.addEventListener("click", handleSubmit)
 
-searchCity("Innsbruck")
+
 
 //
 //
@@ -120,12 +120,13 @@ searchCity("Innsbruck")
 // Current location button
 
 function findCurrentLocation(position) {
-	let lat = position.coords.latitude
-	let lon = position.coords.longitude
-	apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
+	let lat = position.coordinates.latitude
+	let lon = position.coordinates.longitude
+	apiKey = "7e0645b54e0a0f4c0fa7443bo6fb8tf9"
 	units = "metric"
-	apiEndpoint = `https://api.openweathermap.org/data/2.5/weather`
-	apiUrl = `${apiEndpoint}?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`
+	apiEndpoint = `https://api.shecodes.io/weather/v1/current`
+	apiUrl = `${apiEndpoint}?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+	
 	axios.get(apiUrl).then(showTemperature)
 	axios.get(apiUrlCurrent).then(showCurrentTemperature)
 }
@@ -227,11 +228,9 @@ function formatDay(timestamp) {
 //
 // Get forecast
 
-function getForecast(coordinates) {
-	let apiKey = "062a6cf7a5122c2b6ddc6f1bcfcc2e0f"
-	let apiUrl = `
-	https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
-
+function getForecast(city) {
+	let apiKey = "7e0645b54e0a0f4c0fa7443bo6fb8tf9"
+	let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 	axios.get(apiUrl).then(displayForecast)
 }
 
@@ -243,6 +242,7 @@ function getForecast(coordinates) {
 
 function displayForecast(response) {
 	forecast = response.data.daily
+	console.log("Response from API:", response)
 
 	let forecastElement = document.querySelector("#forecast")
 
@@ -256,17 +256,17 @@ function displayForecast(response) {
 				<div class="col-md">
 				<div class="card">
 				<div class="card-body">
-				<h5 class="card-day">${formatDay(forecastDay.dt)}</h5>
+				<h5 class="card-day">${formatDay(forecastDay.time)}</h5>
 					<p class="card-temperature" id="forecast-max${index}">${Math.round(
-					forecastDay.temp.max
+					forecastDay.temperature.maximum
 				)}°</p>
 				<img
-				src="images/icons/${forecastDay.weather[0].icon}.svg"
-				alt="${forecastDay.weather[0].description}"
+				src="images/icons/${forecastDay.condition.icon}.svg"
+				alt="${forecastDay.condition.description}"
 						class="forecast-icon"
 						/>
 					<p class="card-temperature" id="forecast-min${index}">${Math.round(
-					forecastDay.temp.min
+					forecastDay.temperature.minimum
 				)}°</p>
 					</div>
 			</div>
@@ -284,4 +284,4 @@ function displayForecast(response) {
 let forecast = null
 let units = "metric"
 
-displayForecast()
+searchCity("Innsbruck");
