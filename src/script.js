@@ -109,7 +109,7 @@ function handleSubmit(event) {
 }
 
 let form = document.querySelector("#search-form")
-form.addEventListener("click", handleSubmit)
+form.addEventListener("submit", handleSubmit)
 
 
 
