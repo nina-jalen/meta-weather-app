@@ -178,8 +178,8 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature)
 function convertForecastTemperature(unitType) {
 	forecast.forEach(function (forecastDay, index) {
 		if (index > 0 && index < 8) {
-			let tempMin = `${Math.round(forecastDay.temp.min)}°`
-			let tempMax = `${Math.round(forecastDay.temp.max)}°`
+			let tempMin = `${Math.round(forecastDay.temperature.minimum)}°`
+			let tempMax = `${Math.round(forecastDay.temperature.maximum)}°`
 			let min = document.querySelector("#forecast-min" + index)
 			let max = document.querySelector("#forecast-max" + index)
 			if (unitType === "metric") {
@@ -187,10 +187,10 @@ function convertForecastTemperature(unitType) {
 				max.innerHTML = tempMax
 			} else {
 				min.innerHTML = `${Math.round(
-					(forecastDay.temp.min * 9) / 5 + 32
+					(forecastDay.temperature.minimum * 9) / 5 + 32
 				)}°`
 				max.innerHTML = `${Math.round(
-					(forecastDay.temp.min * 9) / 5 + 32
+					(forecastDay.temperature.minimum * 9) / 5 + 32
 				)}°`
 			}
 		}
